@@ -7,6 +7,7 @@ body{
     margin: 0;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -41,4 +42,38 @@ body{
 
 .black.active{
     background-color: rgb(95, 85, 85);
+}
+
+.buttons{
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+.btn{
+
+--hue:100;
+--saturation:100%;
+
+
+    padding: .5rem 1rem;
+    background-color: hsl(var(--hue), var(--saturation), 50%);
+    border: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+    text-decoration: none;
+    cursor:pointer;
+    color: inherit;
+}
+
+.btn:first-child{
+    margin-left: 0;
+}
+
+.record-button{
+    --hue:0;
+    --saturation:0%;
+}
+
+.record-button.active{
+    --saturation:100%;
 }
