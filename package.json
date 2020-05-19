@@ -1,0 +1,33 @@
+{
+  "name": "pianoproj",
+  "version": "1.0.0",
+  "description": "This is second part of piano project with extra functionalities such as recording etc.",
+  "main": "app.js",
+  "scripts": {
+    "devStart":"nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontendprof/pianoProj.git"
+  },
+  "keywords": [
+    "piano",
+    "recording",
+    "save",
+    "music"
+  ],
+  "author": "AbdulMalik Sharif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontendprof/pianoProj/issues"
+  },
+  "homepage": "https://github.com/frontendprof/pianoProj#readme",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
