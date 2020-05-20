@@ -17,7 +17,7 @@ const keyMap = [...keys].reduce((map, key) => {
 
 
 let recordingStartTime;
-let songNotes;
+let songNotes = currentSongs ? currentSong.notes : null;
 
 
 
@@ -26,8 +26,16 @@ keys.forEach((key) => {
   key.addEventListener("click", () => playNote(key));
 });
 
-recordBtn.addEventListener("click", toggleRecording);
-saveBtn.addEventListener("click", saveSong);
+
+if (recordBtn) {
+
+  recordBtn.addEventListener("click", toggleRecording);
+}
+
+if (saveBtn) {
+
+  saveBtn.addEventListener("click", saveSong);
+}
 playBtn.addEventListener("click", playSong);
 
 document.addEventListener("keydown", (e) => {
@@ -116,7 +124,10 @@ function saveSong() {
     .post("/songs", {
       songNotes = songNotes
     })
-    .then(res => console.log(res.data))
-    .catch(err => console.error(err));
+    .then(res => {
+      songLink.classList.add("show");
+      songLink.href = `/songs/${res.data._id}`
+
+    })
 
 }

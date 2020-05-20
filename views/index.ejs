@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/main.css">
+    <script>
+        const currentSong = <%- JSON.stringify(locals.song)||'undefined' %>
+    </script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <script src="app.js" defer></script>
+    <script src="/app.js" defer></script>
     <title>Piano Piece</title>
 </head>
 <body>
     
     <div class="buttons">
-        <button class="record-button btn">Record</button>
-        <button class="play-button btn">Play</button>
-        <button class="save-button btn">Save</button>
+
+        <% if(locals.song== null){ %>
+            <button class="record-button btn">Record</button>
+            <button class="save-button btn">Save</button>
+        }<% else{ %>
+            <a href="#" class="btn ">Record New Song</a>
+        <% } %>
+
+        <button class="play-button btn <%= locals.song!=null ? 'show' : '' %>">Play</button>
+        
 
         
     </div>
@@ -38,18 +48,18 @@
 
 
 
-    <audio id="C" src="notes/C.mp3"></audio>
-    <audio id="Db" src="notes/Db.mp3"></audio>
-    <audio id="D" src="notes/D.mp3"></audio>
-    <audio id="Eb" src="notes/Eb.mp3"></audio>
-    <audio id="E" src="notes/E.mp3"></audio>
-    <audio id="F" src="notes/F.mp3"></audio>
-    <audio id="Gb" src="notes/Gb.mp3"></audio>
-    <audio id="G" src="notes/G.mp3"></audio>
-    <audio id="Ab" src="notes/Ab.mp3"></audio>
-    <audio id="A" src="notes/A.mp3"></audio>
-    <audio id="Bb" src="notes/Bb.mp3"></audio>
-    <audio id="B" src="notes/B.mp3"></audio>
+    <audio id="C" src="/notes/C.mp3"></audio>
+    <audio id="Db" src="/notes/Db.mp3"></audio>
+    <audio id="D" src="/notes/D.mp3"></audio>
+    <audio id="Eb" src="/notes/Eb.mp3"></audio>
+    <audio id="E" src="/notes/E.mp3"></audio>
+    <audio id="F" src="/notes/F.mp3"></audio>
+    <audio id="Gb" src="/notes/Gb.mp3"></audio>
+    <audio id="G" src="/notes/G.mp3"></audio>
+    <audio id="Ab" src="/notes/Ab.mp3"></audio>
+    <audio id="A" src="/notes/A.mp3"></audio>
+    <audio id="Bb" src="/notes/Bb.mp3"></audio>
+    <audio id="B" src="/notes/B.mp3"></audio>
     
 </body>
 </html>
