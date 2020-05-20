@@ -5,6 +5,7 @@ const WHITE_KEYS = ["z", "x", "c", "v", "b", "n", "m"];
 const recordBtn = document.querySelector(".record-button");
 const playBtn = document.querySelector(".play-button");
 const saveBtn = document.querySelector(".save-button");
+const songLink = document.querySelector(".song-link");
 const keys = document.querySelectorAll(".key");
 const white_keys = document.querySelectorAll(".key.white");
 const black_keys = document.querySelectorAll(".key.black");
@@ -26,6 +27,8 @@ keys.forEach((key) => {
 });
 
 recordBtn.addEventListener("click", toggleRecording);
+saveBtn.addEventListener("click", saveSong);
+playBtn.addEventListener("click", playSong);
 
 document.addEventListener("keydown", (e) => {
   if (e.repeat) return;
@@ -105,4 +108,15 @@ function recordNote(note) {
     key: note,
     startTime: Date.now() - recordingStartTime
   })
+}
+
+function saveSong() {
+
+  axios
+    .post("/songs", {
+      songNotes = songNotes
+    })
+    .then(res => console.log(res.data))
+    .catch(err => console.error(err));
+
 }
