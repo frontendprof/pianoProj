@@ -51,8 +51,8 @@ body{
 
 .btn{
 
---hue:100;
---saturation:100%;
+    --hue: 100;
+    --saturation: 100%;
 
 
     padding: .5rem 1rem;
@@ -70,10 +70,15 @@ body{
 }
 
 .record-button{
-    --hue:0;
-    --saturation:0%;
+    --hue: 0;
+    --saturation: 0%;
 }
 
 .record-button.active{
-    --saturation:100%;
+    --saturation: 100%;
+}
+
+.btn:hover,
+.btn:focus{
+    background-color: hsl(var(--hue), var(--saturation), 30%);
 }
