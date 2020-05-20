@@ -7,6 +7,13 @@ const keys = document.querySelectorAll(".key");
 const white_keys = document.querySelectorAll(".key.white");
 const black_keys = document.querySelectorAll(".key.black");
 
+
+let recordingStartTime;
+let songNotes;
+
+
+
+
 keys.forEach((key) => {
   key.addEventListener("click", () => playNote(key));
 });
@@ -42,9 +49,28 @@ function isRecording() {
 }
 
 
+function startRecording() {
+  recordingStartTime = Date.now();
+  songNotes = []
+}
+
+function stopRecording() {
+  playSong();
+}
+
+function playSong() {
+  console.log(songNotes);
+
+}
+
+
 
 
 function playNote(key) {
+
+  if (isRecording()) recordNote(key.dataset.note);
+
+
   const noteAudio = document.getElementById(key.dataset.note);
   noteAudio.currentTime = 0;
   noteAudio.play();
@@ -52,4 +78,12 @@ function playNote(key) {
   noteAudio.addEventListener("ended", () => {
     key.classList.remove("active");
   });
+}
+
+
+function recordNote(note) {
+  songNotes.push({
+    key: note,
+    startTime: Date.now() - recordingStartTime
+  })
 }
