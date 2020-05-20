@@ -3,6 +3,8 @@ const WHITE_KEYS = ["z", "x", "c", "v", "b", "n", "m"];
 
 
 const recordBtn = document.querySelector(".record-button");
+const playBtn = document.querySelector(".play-button");
+const saveBtn = document.querySelector(".save-button");
 const keys = document.querySelectorAll(".key");
 const white_keys = document.querySelectorAll(".key.white");
 const black_keys = document.querySelectorAll(".key.black");
@@ -56,11 +58,16 @@ function isRecording() {
 
 function startRecording() {
   recordingStartTime = Date.now();
-  songNotes = []
+  songNotes = [];
+
+  playBtn.classList.remove("show");
+  saveBtn.classList.remove("show");
 }
 
 function stopRecording() {
   playSong();
+  playBtn.classList.add("show");
+  saveBtn.classList.add("show");
 }
 
 function playSong() {
